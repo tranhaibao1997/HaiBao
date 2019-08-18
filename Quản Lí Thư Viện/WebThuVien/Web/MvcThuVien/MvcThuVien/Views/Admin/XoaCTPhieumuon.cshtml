@@ -1,0 +1,51 @@
+﻿@model MvcThuVien.Models.CTPhieuMuon
+
+@{
+    ViewBag.Title = "XoaCTPhieumuon";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container">
+    <h2>XÁC NHẬN THÔNG TIN CT PHIẾU CẦN XÓA</h2>
+
+    <h3>Bạn muốn xóa chi tiết phiếu này?</h3>
+    <div>
+        <h4>CTPhieuMuon</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Mã phiếu :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MaPhieuMuon)
+            </dd>
+
+            <dt>
+                Tên sách :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Sach.TenSach)
+            </dd>
+
+            <dt>
+                Số lượng :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SoLuong)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                @Html.ActionLink("QUAY VỀ QUẢN LÝ PHIẾU MƯỢN", "PhieuMuon" )
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,59 @@
+﻿@model MvcThuVien.Models.Sach
+
+@{
+    ViewBag.Title = "Chitietsach";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container">
+    <h2>THÔNG TIN CHI TIẾT SÁCH</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Tên sách :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TenSach)
+            </dd>
+
+            <dt>
+                Ảnh bìa :
+            </dt>
+
+            <dd>
+                <img src="@Url.Content("~/Images/"+Model.AnhBia)" width="100" height="150" />
+            </dd>
+
+            <dt>
+                Ngày cập nhật :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NgayCapNhat)
+            </dd>
+
+            <dt>
+                Số lượng :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SoLuong)
+            </dd>
+
+            <dt>
+                Khoa :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Khoa.TenKhoa)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("ĐIỀU CHỈNH", "Suasach", new { id = Model.MaSach }) |
+        @Html.ActionLink("VỀ TRANG QUẢN LÝ SÁCH", "Sach")
+    </p>
+</div>

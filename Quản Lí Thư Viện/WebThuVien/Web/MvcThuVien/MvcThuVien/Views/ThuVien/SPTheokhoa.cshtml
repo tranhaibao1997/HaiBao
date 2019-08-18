@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MvcThuVien.Models.Sach>
+@{
+    ViewBag.Title = "SPTheokhoa";
+    Layout = "~/Views/Shared/_LayoutUser1.cshtml";
+}
+            
+            @*<script>
+                function RutGon(data) {
+                    var count = 0;
+                    var thisStr = "";
+                    if (data != null || data != "") {
+                        for (var i = 0; i < data.length; i++) {
+                            if (count < 15) {
+                                thisStr += data[i];
+                                count++;
+                            }
+                            else { // count >= 50
+                                thisStr + "...";
+                            }
+                        }
+                    }
+                    return thisStr;
+                }
+            </script>*@
+<h2 style="text-align:center">SÁCH THEO KHOA</h2>
+@foreach (var sach in Model)
+{
+    <div class="col-md-4 col-md-6 mb-4" style="padding-bottom:50px;min-height:450px">
+        <div class="card h-100">
+            <a href="@Url.Action("Details","ThuVien",new { id = sach.MaSach })">
+                <img class="card-img-top" src="~/Images/@sach.AnhBia" alt="@sach.TenSach" width="253" height="300">
+            </a>
+            <div class="card-body">
+                <h4 class="card-title">
+                    <a href="@Url.Action("Details","ThuVien",new { id = sach.MaSach })"> @*<script> document.write( RutGon(`*@@sach.TenSach@*`));</script>*@</a>
+                </h4>
+            </div>
+
+
+
+            <div class="card-footer">
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+            </div>
+        </div>
+    </div>
+}
+
+

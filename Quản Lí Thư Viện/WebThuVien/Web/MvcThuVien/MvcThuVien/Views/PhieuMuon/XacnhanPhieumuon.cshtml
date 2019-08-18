@@ -1,0 +1,15 @@
+﻿@using MvcThuVien.Models;
+@{
+    ViewBag.Title = "XacnhanPhieumuon";
+    Layout = "~/Views/Shared/_LayoutUser1.cshtml";
+}
+@{
+    TheDocGia kh = (TheDocGia)Session["Taikhoan"];
+}
+<h2>Bạn @kh.HoTen đã mượn thành công, vui lòng in phiếu và mang lên thư viện để mượn sách.</h2>
+<p>
+    @Html.ActionLink("VỀ TRANG CHỦ","index","ThuVien")
+</p>
+<p>
+    <a href="@Url.Action("ReportPhieuMuon", new { id = kh.MaTheDocGia })">In Phiếu Mượn</a>
+</p>

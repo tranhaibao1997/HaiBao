@@ -1,0 +1,41 @@
+﻿@using MvcThuVien.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<Sach>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<h2 style="text-align:center">SÁCH MỚI CẬP NHẬT</h2>
+<div class="row">
+    @foreach (var sach in Model)
+    {
+        <div class="col-md-4 col-md-6 mb-4" style="padding-bottom:50px;min-height:450px">
+            <div class="card h-100">
+                <a href="@Url.Action("Details","ThuVien",new { id = sach.MaSach })">
+                    <img class="card-img-top" src="~/Images/@sach.AnhBia" alt="@sach.TenSach" width="253" height="300">
+                </a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="@Url.Action("Details","ThuVien",new { id = sach.MaSach })">@sach.TenSach</a>
+                    </h4>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div class="row">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount;
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+</style>
+
+

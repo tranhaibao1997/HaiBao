@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class='form animated flipInX'>
+    <table align="center">
+        <h3 style="text-align:center">ĐĂNG NHẬP</h3>
+        <h4 style="color:red;text-align:center">
+            @ViewBag.Thongbao
+            @ViewData["Loi1"]
+            @ViewData["Loi2"]
+        </h4>
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            <tr style="height:40px">
+                <td>Tên đăng nhập :</td>
+                <td>
+                    @Html.TextBox("TenDN")
+                </td>
+            </tr>
+            <tr style="height:40px">
+                <td>Mật khẩu :</td>
+                <td>
+                    @Html.Password("Matkhau")
+                </td>
+            </tr>
+            <tr style="height:40px">
+                <td></td>
+                <td>
+                    <button class='animated infinite pulse'>Login</button>
+                    @*<input type="submit" value="Đăng nhập"  class='animated infinite pulse'/>*@
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+

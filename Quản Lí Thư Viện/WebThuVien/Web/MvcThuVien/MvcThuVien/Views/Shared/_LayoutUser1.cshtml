@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Thư Viện</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <!--
+
+    Template 2076 Zentro
+
+    http://www.tooplate.com/view/2076-zentro
+
+    -->
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/animate.min.css">
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/nivo-lightbox.css">
+    <link rel="stylesheet" href="~/Content/nivo_themes/default/default.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <!-- preloader section -->
+    <section class="preloader">
+        <div class="sk-spinner sk-spinner-pulse"></div>
+    </section>
+
+    <!-- navigation section -->
+    <section class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                </button>                
+                @Html.Action("ThuVienPartial", "ThuVien")
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="@Url.Action("Index","ThuVien")">TRANG CHỦ</a></li>
+                    <li><a href="@Url.Action("Index","ThuVien")">SÁCH</a></li>
+                    <li><a href="#contact">THÔNG TIN</a></li>
+                    <li>@Html.Action("PhieuMuonPartial", "PhieuMuon")</li>
+                    @if (Session["Taikhoan"] != null)
+                    {
+                        <li><a href="#">User : @Session["TenNguoiDung"]  </a></li>
+                        <li>
+                            <!-- Log out -->
+                            @using (Html.BeginForm("Logout", "Nguoidung", FormMethod.Post))
+                            {
+                                <button class="btn btn-primary" style="margin-top: 0.7em;" type="submit">Ðăng Xuất</button>
+                            }
+                        </li>
+                    }
+                    else
+                    {
+                        <li>@Html.Action("DangnhapPartial", "ThuVien")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div id="sach" style="padding-bottom:50px;padding-top:50px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    @Html.Action("Khoa", "ThuVien")
+
+                    <!-- Thanh tim kiem -->
+                    @{ Html.RenderAction("Search", "ThuVien");}
+
+                </div>
+                <div class="col-lg-9">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonials section -->
+    <section id="testimonials" class="section testimonials no-padding">
+        <div class="container-fluid">
+            <div class="row no-gutter">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <div class="col-md-12">
+                                <blockquote>
+                                    <h1>"Việc đọc rất quan trọng. Nếu bạn biết cách đọc, cả thế giới sẽ mở ra cho bạn." </h1>
+                                    <p>- Barack Obama -</p>
+                                </blockquote>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col-md-12">
+                                <blockquote>
+                                    <h1>"Một cuốn sách thực sự hay dạy tôi nhiều điều hơn là đọc nó. Tôi phải nhanh chóng đặt nó xuống, bắt đầu sống theo những điều nó chỉ dẫn. Điều tôi bắt đầu bằng cách đọc, tôi phải kết thúc bằng hành động." </h1>
+                                    <p>- Henry David Thoreau -</p>
+                                </blockquote>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col-md-12">
+                                <blockquote>
+                                    <h1>"Nếu chỉ đọc những sách người khác hay đọc, thì bạn chỉ biết được những điều mọi người thường nghĩ." </h1>
+                                    <p>- Haruki Murakami -</p>
+                                </blockquote>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col-md-12">
+                                <blockquote>
+                                    <h1>"Đọc sách hay cũng giống như trò chuyện với các bộ óc tuyệt vời nhất của những thế kỷ đã trôi qua.</h1>
+                                    <p>- Rene Descartes -</p>
+                                </blockquote>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials section -->
+    <!-- footer section -->
+    <span id="contact"></span>
+    <footer class="parallax-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.6s">
+                    <h2 class="heading">Contact Info.</h2>
+                    <div class="ph">
+                        <p><i class="fa fa-phone"></i> Phone - Fax</p>
+                        <h4>Phone: (+84 8)38 621 856</h4>
+                        <h4>Fax: (+84 8)38 650 991</h4>
+                    </div>
+                    <div class="address">
+                        <p><i class="fa fa-map-marker"></i> Our Location</p>
+                        <h4>155 Sư Vạn Hạnh (nd), Phường 13, Quận 10, TP.HCM</h4>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.6s">
+                    <h2 class="heading">Open Hours</h2>
+                    <p>Mon-Fri <span>8:00 AM - 5:00 PM</span></p>
+                    <p>Saturday <span>No service</span></p>
+                    <h2 class="heading">Exam Season</h2>
+                    <p>Mon-Fri <span>8:00 AM - 8:00 PM</span></p>
+                    <p>Saturday <span>8:00 AM - 5:00 PM</span></p>
+                </div>
+                <div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.6s">
+                    <h2 class="heading">Follow Us</h2>
+                    <ul class="social-icon">
+                        <li><a href="#" class="fa fa-facebook wow bounceIn" data-wow-delay="0.3s"></a></li>
+                        <li><a href="#" class="fa fa-twitter wow bounceIn" data-wow-delay="0.6s"></a></li>
+                        <li><a href="#" class="fa fa-behance wow bounceIn" data-wow-delay="0.9s"></a></li>
+                        <li><a href="#" class="fa fa-dribbble wow bounceIn" data-wow-delay="0.9s"></a></li>
+                        <li><a href="#" class="fa fa-github wow bounceIn" data-wow-delay="0.9s"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- JAVASCRIPT JS FILES -->
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.parallax.js"></script>
+    <script src="~/Scripts/smoothscroll.js"></script>
+    <script src="~/Scripts/nivo-lightbox.min.js"></script>
+    <script src="~/Scripts/wow.min.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/main.js"></script>
+
+    <script src="~/Scripts/jquery.flexslider-min.js"></script>
+
+</body>
+</html>

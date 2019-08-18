@@ -1,0 +1,44 @@
+﻿@model MvcThuVien.Models.Sach
+<style type="text/css">
+    #Datmua a {
+        clear: both;
+        background-color: red;
+        color: white;
+        width: 120px;
+        height: 50px;
+        display: block;
+        float: right;
+        text-align: center;
+        padding-bottom: 10px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        #Datmua a:hover {
+            background-color: grey;
+            color: red;
+        }
+</style>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutUser1.cshtml";
+}
+<h2>THÔNG TIN CHI TIẾT SÁCH</h2>
+<div>
+    <div style="width:40%; float:left; border-left: dotted 1px; border-color:azure">
+        <img src="~/Images/@Model.AnhBia" width="100%" />
+    </div>
+    <div style="width:60%; float:left; padding: 10px;">
+        <h4 style="font-weight:bold;color:red">Tên sách: @Model.TenSach</h4>
+        <p style="font-weight:bold">Số lượng còn: @Model.SoLuong</p>
+    </div>
+    <div>
+        <div id="Datmua">
+            <a href="@Url.Action("ThemPhieumuon","PhieuMuon",new {@iMasach=Model.MaSach,@strUrl=Request.Url.ToString()})" class="list-group-item">
+                Mượn sách
+            </a>
+        </div>
+    </div>
+</div>
+
+

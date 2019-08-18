@@ -1,0 +1,120 @@
+﻿@using MvcThuVien.Models
+@model List<Phieumuon>
+@{
+    ViewBag.Title = "DatPhieu";
+    Layout = "~/Views/Shared/_LayoutUser1.cshtml";
+}
+
+<h2 style="text-align:center">THÔNG TIN PHIẾU MƯỢN</h2>
+@*<table align="center" border="1">
+        <tr style="text-align:center;font-weight:bold">
+            <td>Mã sách</td>
+            <td>Tên sách</td>
+            <td>Ảnh bìa</td>
+            <td>Số lượng</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr style="text-align:center;font-weight:bold">
+                <td>@item.iMasach</td>
+                <td>@item.sTensach</td>
+                <td><img src="~/Images/@item.sAnhbia" width="100" height="150" /></td>
+                @using (Html.BeginForm("CapnhatPhieumuon", "Phieumuon", new { @iMaSP = item.iMasach }))
+                {
+                    <td>
+                        @item.iSoluong
+                    </td>
+                }
+            </tr>
+        }
+        <tr style="font-weight:bold; text-align:right;color:red">
+            <td colspan="4">Số lượng sách : @ViewBag.Tongsoluong</td>
+        </tr>
+        <tr style="font-weight:bold; text-align:right;color:red">
+            <td colspan="4">
+                @Html.ActionLink("TRỞ VỀ PHIẾU MƯỢN", "Phieumuon", "PhieuMuon")
+            </td>
+        </tr>
+    </table>*@
+<h2 style="text-align:center">PHIẾU MƯỢN</h2>
+@{
+    TheDocGia kh = (TheDocGia)Session["Taikhoan"];
+}
+<table align="center">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <tr style="height:40px">
+            <td>Họ tên đọc giả :</td>
+            <td style="font-weight:bold">@kh.HoTen</td>
+        </tr>
+        <tr style="height:40px">
+            <td>Địa chỉ :</td>
+            <td style="font-weight:bold">@kh.DiachiKH</td>
+        </tr>
+        <tr style="height:40px">
+            <td>Điện thoại :</td>
+            <td style="font-weight:bold">@kh.DienthoaiKH</td>
+        </tr>
+        <tr style="height:40px">
+            <td>Ngày mượn :</td>
+            <td style="font-weight:bold">@DateTime.Now.ToShortDateString()</td>
+        </tr>
+        <tr style="height:40px">
+            <td>Ngày trả :</td>
+            <td style="font-weight:bold">@DateTime.Now.AddDays(7).ToShortDateString()</td>
+        </tr>
+        <tr style="height:40px">
+            <td></td>
+            <td>
+                @*<input type="submit" value="ĐỒNG Ý MƯỢN" />*@
+                <button class="btn btn-success">ĐỒNG Ý MƯỢN</button>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Sách</th>
+            <th style="text-align:right">Số lượng</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="col-sm-8 col-md-6">
+                    <div class="media">
+                        <a class="thumbnail pull-left" href="@Url.Action("Details","ThuVien",new { id = item.iMasach })"> <img src="~/Images/@item.sAnhbia" width="100" height="150" /> </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"><a href="@Url.Action("Details","ThuVien",new { id = item.iMasach })">@item.sTensach</a></h4>
+                        </div>
+                    </div>
+                </td>
+                @using (Html.BeginForm("CapnhatPhieumuon", "Phieumuon", new { @iMaSP = item.iMasach }))
+                {
+                    <td class="col-sm-1 col-md-1" style="text-align: right; color:red;font-weight:bold">
+                        @item.iSoluong
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td><h5 style="color:red;font-weight:bold;">Số lượng sách :</h5></td>
+            <td class="text-right" style="color:red;font-weight:bold;"><h5><strong>@ViewBag.Tongsoluong</strong></h5></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td style="font-weight:bold; text-align:right;color:red;min-width:200px" >
+                @Html.ActionLink("TRỞ VỀ PHIẾU MƯỢN", "Phieumuon", "PhieuMuon")
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+
+

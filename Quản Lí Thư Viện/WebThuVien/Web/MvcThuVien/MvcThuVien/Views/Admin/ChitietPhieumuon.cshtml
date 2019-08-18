@@ -1,0 +1,85 @@
+﻿@model MvcThuVien.Models.PhieuMuonSach
+
+@{
+    ViewBag.Title = "ChitietPhieumuon";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <h2>THÔNG TIN CHI TIẾT PHIẾU MƯỢN</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Mã phiếu mượn :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MaPhieuMuon)
+            </dd>
+
+            <dt>
+                Tên đọc giả :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TheDocGia.HoTen)
+            </dd>
+
+            <dt>
+                Ngày mượn :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NgayMuon)
+            </dd>
+
+            <dt>
+                Ngày trả :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NgayTra)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("VỀ TRANG QUẢN LÝ PHIẾU MƯỢN", "PhieuMuon")
+    </p>
+    
+    <br />
+    <table border="1">
+        <tr>   
+            <th style="width:200px">
+                Mã phiếu mượn
+            </th>       
+            <th style="width:200px">
+                Tên sách
+            </th>
+            <th style="width:200px">
+                Số lượng 
+            </th>
+            <th style="width:200px">Action (Xóa)</th>
+        </tr>
+
+        @foreach (var item in Model.CTPhieuMuons)
+        {
+            <tr>   
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaPhieuMuon)
+                </td>            
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sach.TenSach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoLuong)
+                </td>
+                <td>
+                    @Html.ActionLink("XÓA", "XoaCTPhieuMuon", new {  @idPhieu = item.MaPhieuMuon, @idSach = item.MaSach  })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

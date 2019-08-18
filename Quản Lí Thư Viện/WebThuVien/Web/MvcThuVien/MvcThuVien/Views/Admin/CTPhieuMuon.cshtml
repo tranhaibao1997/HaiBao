@@ -1,0 +1,86 @@
+﻿@*@using MvcThuVien.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<MvcThuVien.Models.CTPhieuMuon>*@
+@model IEnumerable<MvcThuVien.Models.CTPhieuMuon>
+@{
+    ViewBag.Title = "CTPhieuMuon";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@*<div class="container">
+    <h2>CTPhieuMuon</h2>
+
+
+    <table class="table">
+        <tr>
+            <th style="width:200px">
+                Mã phiếu mượn
+            </th>
+            <th style="width:200px">
+                Tên sách
+            </th>
+            <th style="width:200px">
+                Số lượng
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhieuMuonSach.MaPhieuMuon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sach.TenSach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoLuong)
+                </td>
+                <td>
+                    @Html.ActionLink("SỬA", "SuaCTPhieuMuon", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("CHI TIẾT", "ChitietCTPhieuMuon", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("XÓA", "XoaCTPhieuMuon", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>*@
+
+<div class="container">
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fa fa-user"></i> <b>QUẢN LÝ THÔNG TIN CT PHIẾU MƯỢN</b><br />            
+            <hr />
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th style="width:200px">Mã phiếu mượn</th>
+                            <th style="width:120px">Tên sách</th>
+                            <th style="width:150px">Số lượng</th>                                                
+                            <th style="width:200px">Action (Delete)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.MaPhieuMuon</td>
+                                <td>@item.Sach.TenSach</td>
+                                <td>@item.SoLuong</td>                               
+                            
+                                <td><a href="@Url.Action("XoaCTPhieuMuon","Admin", new { @idPhieu = item.MaPhieuMuon, @idSach = item.MaSach })"><input type="button" value="Xóa" class="btn btn-warning" /></a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer small text-muted">Updated: @DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")</div>
+    </div>
+</div>

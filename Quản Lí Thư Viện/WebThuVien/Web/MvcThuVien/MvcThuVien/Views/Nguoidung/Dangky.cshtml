@@ -1,0 +1,147 @@
+﻿
+@{
+    ViewBag.Title = "Dangky";
+    Layout = "~/Views/Shared/_LayoutTest.cshtml";
+}
+
+@*<div class='form animated flipInX' style="width:400px;">
+        <table align="center">
+            <h2 style="text-align:center">ĐĂNG KÝ THẺ ĐỌC GIẢ</h2>
+            <h4 style="color:red;text-align:center">
+                @ViewData["Loi1"]
+                @ViewData["Loi2"]
+                @ViewData["Loi3"]
+                @ViewData["Loi4"]
+                @ViewData["Loi5"]
+                @ViewData["Loi6"]
+                @ViewData["Loi7"]
+            </h4>
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+                <tr style="height:40px">
+                    <td>Họ tên đọc giả :</td>
+                    <td>
+                        @Html.TextBox("HotenKH")
+                    </td>
+                </tr>
+                <tr style="height:40px">
+                    <td>Tên đăng nhập :</td>
+                    <td>
+                        @Html.TextBox("TenDN")
+                </tr>
+                <tr style="height:40px">
+                    <td>Mật khẩu :</td>
+                    <td>
+                        @Html.Password("Matkhau")
+                    </td>
+                </tr>
+                <tr style="height:40px">
+                    <td>Nhập lại mật khẩu :</td>
+                    <td>
+                        @Html.Password("Matkhaunhaplai")
+                    </td>
+                </tr>
+                <tr style="height:40px">
+                    <td>Email :</td>
+                    <td>
+                        @Html.TextBox("Email")
+                    </td>
+                </tr>
+                <tr style="height:40px">
+                    <td>Địa chỉ :</td>
+                    <td>
+                        @Html.TextBox("Diachi")
+                    </td>
+                </tr>
+                <tr style="height:40px">
+                    <td>Điện thoại :</td>
+                    <td>
+                        @Html.TextBox("Dienthoai")
+                    </td>
+                </tr>
+                <tr style="height:40px">
+                    <td>Ngày sinh :</td>
+                    <td>
+                        <input type="date" name="Ngaysinh" />
+                    </td>
+                </tr>
+                <tr style="height:40px">
+                    <td></td>
+                    <td>
+                        <button class='animated infinite pulse'>Đăng ký</button>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>*@
+
+<div class="container-contact100">
+    <div class="wrap-contact100">
+        <div class="contact100-form-title" style="background-image: url(~/Images/bg-01.jpg);">
+            <span class="contact100-form-title-1">
+                ĐĂNG KÍ TÀI KHOẢN
+            </span>
+            <span class="contact100-form-title-2" style="color:yellow;font-weight:bold">
+                @ViewBag.ThongBaoLoi
+            </span>
+        </div>
+        <div class="contact100-form validate-form">
+            @using (Html.BeginForm())
+            {
+                <div class="wrap-input100 validate-input" data-validate="Name is required">
+                    <span class="label-input100">Họ tên đọc giả :</span>
+                    <input class="input100" type="text" name="HotenKH" placeholder="Enter full name">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Acount is required">
+                    <span class="label-input100">Tên đăng nhập :</span>
+                    <input class="input100" type="text" name="TenDN" placeholder="Enter acount addess" @*pattern="[a-zA-Z0-9]"*@>
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                    <span class="label-input100">Mật khẩu :</span>
+                    <input class="input100" type="password" name="Matkhau" placeholder="Enter password number" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Vui lòng nhập ít nhất 1 số và 1 chữ in hoa và 1 chữ thường, tối thiểu 8 kí tự">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                    <span class="label-input100">Nhập lại mật khẩu :</span>
+                    <input class="input100" type="password" name="Matkhaunhaplai" placeholder="Enter password number">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                    <span class="label-input100">Email :</span>
+                    <input class="input100" type="text" name="email" placeholder="Enter email">
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="address is required">
+                    <span class="label-input100">Địa chỉ :</span>
+                    <input class="input100" type="text" name="Diachi" placeholder="Enter address">
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="phone is required">
+                    <span class="label-input100">Điện thoại :</span>
+                    <input class="input100" type="tel" name="Dienthoai" placeholder="Enter phone number" pattern="[0]{1}[1-9]{9,10}" title="Vui lòng nhập số điện thoại (VD: 0901231234)">
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Birthday is required">
+                    <span class="label-input100">Ngày sinh :</span>
+                    <input class="input100" type="date" name="Ngaysinh" placeholder="Enter Birthday">
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="container-contact100-form-btn">
+                    <button class="contact100-form-btn">
+                        <span>
+                            Đăng ký
+                            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
