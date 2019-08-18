@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">993428690591-m7nbf6i1bvq1cdd2olm360gmv4k1ch8q.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://quanlikhachhang-1138c.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">993428690591</string>
+    <string name="google_api_key" translatable="false">AIzaSyDUmjb-EUi4xVJkJfYEjT5hzVMKBvU8Lv8</string>
+    <string name="google_app_id" translatable="false">1:993428690591:android:4a3e32012a90290d</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDUmjb-EUi4xVJkJfYEjT5hzVMKBvU8Lv8</string>
+    <string name="google_storage_bucket" translatable="false">quanlikhachhang-1138c.appspot.com</string>
+    <string name="project_id" translatable="false">quanlikhachhang-1138c</string>
+</resources>
